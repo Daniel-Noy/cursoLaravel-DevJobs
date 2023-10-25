@@ -28,19 +28,19 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-x-links.dropdown-link :href="route('profile.edit')">
+                        <x-links.dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
-                        </x-x-links.dropdown-link>
+                        </x-links.dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-x-links.dropdown-link :href="route('logout')"
+                            <x-links.dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                     this.closest('form').submit();">
                                 {{ __('Log Out') }}
-                            </x-x-links.dropdown-link>
+                            </x-links.dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>

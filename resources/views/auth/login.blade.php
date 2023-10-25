@@ -34,12 +34,12 @@
 
         <div class="flex justify-between my-4">
             @if (Route::has('password.request'))
-                <x-links.link :href="route('register')">
+                <x-links.link :href="route('password.request')">
                     {{ __('forms.forgot-pass-txt') }}
                 </x-links.link>
-
-                <x-links.link :href="route('password.request')">
-                    Crear Cuenta
+                
+                <x-links.link :href="route('register')">
+                        Crear Cuenta
                 </x-links.link>
             @endif
         </div>
