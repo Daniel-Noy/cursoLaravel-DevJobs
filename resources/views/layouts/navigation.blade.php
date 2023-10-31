@@ -6,8 +6,11 @@
                 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-links.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-links.nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
                         {{ __('Dashboard') }}
+                    </x-links.nav-link>
+                    <x-links.nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
+                        {{ __('Nueva Vacante') }}
                     </x-links.nav-link>
                 </div>
             </div>
@@ -29,7 +32,7 @@
 
                     <x-slot name="content">
                         <x-links.dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-links.dropdown-link>
 
                         <!-- Authentication -->
@@ -39,7 +42,7 @@
                             <x-links.dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar Sesión') }}
                             </x-links.dropdown-link>
                         </form>
                     </x-slot>
@@ -61,8 +64,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-links.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-links.responsive-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
                 {{ __('Dashboard') }}
+            </x-links.responsive-nav-link>
+            <x-links.responsive-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
+                {{ __('Nueva Vacante') }}
             </x-links.responsive-nav-link>
         </div>
 
