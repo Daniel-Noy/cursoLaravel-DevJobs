@@ -19,4 +19,8 @@ class Vacant extends Model
         'is_published',
         'user_id'
     ];
+
+    protected $casts = [
+        'deadline' => 'date'
+    ];
 }
