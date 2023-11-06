@@ -1,6 +1,7 @@
 <div class="sm:flex sm:justify-center p-5">
     <form class=" sm:w-10/12 md:w-2/3 lg:w-1/2 space-y-4"
-    action="">
+    wire:submit='save'
+    >
     <div>
         <x-forms.input-label
         for="title"
@@ -10,10 +11,12 @@
         id="title"
         class="block mt-1 w-full"
         type="text"
-        name="title"
+        wire:model="form.title"
         :value="old('title')"
         placeholder="Titulo de la vacante"
         />
+
+        <x-forms.input-error :messages="$errors->get('form.title')" class="mt-2" />
     </div>
 
     <div>
@@ -22,13 +25,12 @@
         :value="__('Salario Mensual')" />
 
         <x-forms.select id="salary" class="block mt-1 w-full"
-        name="salary"
+        wire:model="form.salary_id"
         :value="old('salary')"
-        :options="[
-            '$100',
-            '$200',
-            '$300'
-            ]" />
+        :options="$salaries"
+        />
+
+        <x-forms.input-error :messages="$errors->get('form.salary')" class="mt-2" />
     </div>
 
     <div>
@@ -36,13 +38,14 @@
         for="category"
         :value="__('Categoria')" />
 
-        <x-forms.select id="category" class="block mt-1 w-full"
-        name="category"
+        <x-forms.select id="category" 
+        class="block mt-1 w-full"
+        wire:model="form.category_id"
         :value="old('category')"
-        :options="[
-            'Categoria 1',
-            'Categoria 2'
-            ]" />
+        :options="$categories"
+        />
+
+        <x-forms.input-error :messages="$errors->get('form.category')" class="mt-2" />
     </div>
 
     <div>
@@ -54,10 +57,12 @@
         id="company"
         class="block mt-1 w-full"
         type="text"
-        name="company"
+        wire:model="form.company"
         :value="old('company')"
         placeholder="Empresa ej. Netflix, Uber, Shopify"
         />
+
+        <x-forms.input-error :messages="$errors->get('form.company')" class="mt-2" />
     </div>
 
     <div>
@@ -69,9 +74,11 @@
         id="deadline"
         class="block mt-1 w-full"
         type="date"
-        name="deadline"
+        wire:model="form.deadline"
         :value="old('deadline')"
         />
+
+        <x-forms.input-error :messages="$errors->get('form.deadline')" class="mt-2" />
     </div>
 
     <div>
@@ -82,12 +89,14 @@
         <x-forms.text-area
         id="description"
         class="block mt-1 w-full"
-        name="description"
+        wire:model="form.description"
         rows="10"
         placeholder="Descripción del trabajo, Requisitos, Habilidades, etc."
         >
         {{ old('description') }}
         </x-forms.text-area>
+
+        <x-forms.input-error :messages="$errors->get('form.description')" class="mt-2" />
     </div>
 
     <div>
@@ -105,9 +114,17 @@
         id="image"
         class="hidden"
         type="file"
-        name="image"
+        accept='image/*'
+        wire:model="image"
         />
+        <x-forms.input-error :messages="$errors->get('image')" class="mt-2" />
     </div>
+
+    @if ($image)
+        <div class="w-max max-w-md mx-auto">
+            <img src="{{ $image->temporaryUrl() }}">
+        </div>
+    @endif
 
     <x-buttons.primary-button>
         Crear Vacante
