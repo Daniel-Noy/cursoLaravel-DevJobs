@@ -2,21 +2,23 @@
 
 namespace App\Livewire\Vacants;
 
-use App\Livewire\Forms\CreateVacantForm;
+use App\Livewire\Forms\VacantForm;
 use App\Models\Category;
 use App\Models\Salary;
 use App\Models\Vacant;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Str;
 
 class CreateVacant extends Component
 {
     use WithFileUploads;
-    public CreateVacantForm $form;
+
+    public VacantForm $form;
     #[Rule('required|image')]
     public $image;
+    public $updatedImage;
 
     public function save()
     {

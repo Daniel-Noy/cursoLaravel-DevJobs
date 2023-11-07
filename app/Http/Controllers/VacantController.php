@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vacant;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -46,9 +47,13 @@ class VacantController extends Controller
     /**
      * Show the form for editing the specified vacant.
      */
-    public function edit(string $id)
+    public function edit(Vacant $vacant): View
     {
-        //
+        $this->authorize('update', $vacant);
+        
+        return view('recruiter.vacants.edit', [
+            'vacant' => $vacant
+        ]);
     }
 
     /**

@@ -11,7 +11,7 @@
                 {{$vacant->company}}
             </p>
             <p class="text-sm text-gray-500"
-            >Último día {{ $vacant->deadline->format('d/m/Y') }}
+            >Último día {{ $vacant->deadline }}
             </p>
         </div>
 

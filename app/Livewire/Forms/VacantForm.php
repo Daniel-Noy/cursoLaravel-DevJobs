@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Rule;
 use Livewire\Form;
 
-class CreateVacantForm extends Form
+class VacantForm extends Form
 {
     #[Rule('required|min:5|string')]
     public $title = '';
@@ -24,7 +24,4 @@ class CreateVacantForm extends Form
 
     #[Rule('required|string|min:20')]
     public $description = '';
-
-    // #[Rule('required|image')]
-    // public $image = '';
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Vacant extends Model
 {
@@ -23,4 +25,9 @@ class Vacant extends Model
     protected $casts = [
         'deadline' => 'date'
     ];
+
+    protected function deadline(): Attribute
+    {
+        return Attribute::get(fn ($value) => Carbon::parse($value)->format('Y-m-d'));
+    }
 }
