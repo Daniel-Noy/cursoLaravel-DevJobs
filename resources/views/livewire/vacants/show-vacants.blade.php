@@ -15,6 +15,7 @@
             </p>
         </div>
 
+        {{--? ---- Acciones ---- --}}
         <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center text-center">
             <a href=""
             class="py-4 md:py-2 px-4 bg-slate-700 dark:bg-slate-900 hover:bg-slate-600 rounded-lg text-white text-xs font-bold uppercase"
@@ -26,11 +27,12 @@
             >
                 Editar
             </a>
-            <a href=""
+            <button
+            wire:click="$dispatch('confirm-delete', {id: {{ $vacant->id }}})"
             class="py-4 md:py-2 px-4 bg-red-600 dark:bg-red-900 hover:bg-red-700 rounded-lg text-white text-xs font-bold uppercase"
             >
                 Eliminar
-            </a>
+            </button>
         </div>
     </div>
 
@@ -49,3 +51,35 @@
     </div>
 </div>
 
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const confirmAlert = Swal.mixin({
+        titleText: 'Estas Seguro?',
+        text: 'No podrás revertir esta acción',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar',
+        cancelButtonText: 'Cancelar'
+    })
+    
+    const deletedAlert = Swal.mixin({
+        title: 'Eliminada',
+        text: 'Has eliminado la vacante.',
+        icon: 'success'
+    })
+
+    document.addEventListener('livewire:initialized', ()=> {
+        @this.on('confirm-delete', ({id})=> {
+            confirmAlert.fire().then((result) => {
+                if (result.isConfirmed) {
+                    @this.dispatch('delete-vacant', {id})
+                    deletedAlert.fire()
+                }
+            })
+        })
+    })
+</script>
+@endpush

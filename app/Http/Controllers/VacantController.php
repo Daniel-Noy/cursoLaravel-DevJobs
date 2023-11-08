@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacant;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class VacantController extends Controller
 {
@@ -29,14 +28,6 @@ class VacantController extends Controller
     }
 
     /**
-     * Store a newly created vacant in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified vacant.
      */
     public function show(string $id)
@@ -54,21 +45,5 @@ class VacantController extends Controller
         return view('recruiter.vacants.edit', [
             'vacant' => $vacant
         ]);
-    }
-
-    /**
-     * Update the specified vacant in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified vacant from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
