@@ -9,13 +9,16 @@ class VacantController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth', 'verified'])
+        ->except('show');
     }
     /**
      * Display a listing of vacants.
      */
     public function index(): View
     {
+        $this->authorize('viewAny', Vacant::class);
+
         return view('recruiter.vacants.index');
     }
 
@@ -24,15 +27,19 @@ class VacantController extends Controller
      */
     public function create(): View
     {
+        $this->authorize('create', Vacant::class);
+        
         return view('recruiter.vacants.create');
     }
 
     /**
      * Display the specified vacant.
      */
-    public function show(string $id)
+    public function show(Vacant $vacant): View
     {
-        //
+        return view('vacant.show', [
+            'vacant' => $vacant
+        ]);
     }
 
     /**

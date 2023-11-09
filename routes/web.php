@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', [VacantController::class, 'index'])->name('vacants.index');
 Route::resource('vacants', VacantController::class)->except('index');

@@ -6,6 +6,7 @@ use App\Livewire\Forms\VacantForm;
 use App\Models\Category;
 use App\Models\Salary;
 use App\Models\Vacant;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
@@ -29,7 +30,7 @@ class EditVacant extends Component
         $this->form->salary_id = $vacant->salary_id;
         $this->form->category_id = $vacant->category_id;
         $this->form->company = $vacant->company;
-        $this->form->deadline = $vacant->deadline;
+        $this->form->deadline = Carbon::parse($vacant->deadline)->format('Y-m-d');
         $this->form->description = $vacant->description;
         $this->image = $vacant->image;
 

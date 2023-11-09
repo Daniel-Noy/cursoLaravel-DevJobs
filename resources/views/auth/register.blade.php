@@ -23,8 +23,8 @@
                 name="rol"
                 :value="old('rol')"
                 :options="[
-                    'Desarrollador - Obtener Empleo',
-                    'Reclutador - Publicar Empleo'
+                    '1' => 'Reclutador - Publicar Empleo',
+                    '2' => 'Desarrollador - Obtener Empleo',
                     ]" />
             <x-forms.input-error :messages="$errors->get('rol')" class="mt-2" />
         </div>
