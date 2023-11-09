@@ -29,9 +29,9 @@
         </div>
 
         <div class="flex items-center mt-4">
-            <x-buttons.primary-button>
+            <x-forms.submit-button>
                 {{ __('forms.forgot-pass-btn') }}
-            </x-buttons.primary-button>
+            </x-forms.submit-button>
         </div>
     </form>
 </x-guest-layout>

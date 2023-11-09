@@ -126,8 +126,8 @@
         </div>
     @endif
 
-    <x-buttons.primary-button>
+    <x-forms.submit-button>
         Crear Vacante
-    </x-buttons.primary-button>
+    </x-forms.submit-button>
     </form>
 </div>

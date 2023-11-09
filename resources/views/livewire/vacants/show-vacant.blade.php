@@ -59,8 +59,8 @@
             <img src="{{ asset('storage/img/vacants/'.$vacant->image) }}" alt="Imagen vacante">
         </div>
     </div>
-{{-- 
+
     @can('apply', App\Models\Vacant::class)
         @livewire('vacants.apply-vacant')
-    @endcan --}}
+    @endcan
 </div>

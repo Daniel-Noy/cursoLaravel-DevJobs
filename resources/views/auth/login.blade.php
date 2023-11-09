@@ -44,8 +44,8 @@
             @endif
         </div>
 
-        <x-buttons.primary-button>
+        <x-forms.submit-button>
             {{ __('forms.login-txt') }}
-        </x-buttons.primary-button>
+        </x-forms.submit-button>
     </form>
 </x-guest-layout>

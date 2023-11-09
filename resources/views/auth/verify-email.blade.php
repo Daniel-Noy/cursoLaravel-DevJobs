@@ -14,9 +14,9 @@
             @csrf
 
             <div>
-                <x-buttons.primary-button>
+                <x-forms.submit-button>
                     Reenviar correo de verificación
-                </x-buttons.primary-button>
+                </x-forms.submit-button>
             </div>
         </form>
 

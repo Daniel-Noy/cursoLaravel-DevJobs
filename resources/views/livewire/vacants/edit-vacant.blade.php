@@ -120,8 +120,8 @@
         </div>
     @endif
 
-    <x-buttons.primary-button>
+    <x-forms.submit-button>
         Guardar Cambios
-    </x-buttons.primary-button>
+    </x-forms.submit-button>
     </form>
 </div>
