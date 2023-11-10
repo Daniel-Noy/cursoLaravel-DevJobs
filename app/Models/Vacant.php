@@ -41,8 +41,8 @@ class Vacant extends Model
         ]);
     }
 
-    // protected function deadline(): Attribute
-    // {
-    //     return Attribute::get(fn ($value) => Carbon::parse($value)->format('Y-m-d'));
-    // }
+    protected function Applicants()
+    {
+        return $this->belongsToMany(User::class, 'applicants');
+    }
 }
