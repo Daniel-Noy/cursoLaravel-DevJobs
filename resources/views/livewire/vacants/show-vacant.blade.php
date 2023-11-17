@@ -61,6 +61,6 @@
     </div>
 
     @can('apply', App\Models\Vacant::class)
-        @livewire('vacants.apply-vacant', ['vacantId' => $vacant->id])
+        @livewire('vacants.apply-vacant', ['vacant' => $vacant])
     @endcan
 </div>

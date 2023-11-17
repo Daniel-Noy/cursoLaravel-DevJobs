@@ -3,6 +3,8 @@
 namespace App\Livewire\Vacants;
 
 use App\Models\Applicant;
+use App\Models\Vacant;
+use App\Notifications\NewApplicant;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
@@ -16,11 +18,11 @@ class ApplyVacant extends Component
 
     #[Rule('required|mimes:pdf')]
     public $cv;
-    public int $vacantId;
+    public Vacant $vacant;
     public bool $isApplied;
 
     public function mount() {
-        $this->isApplied = auth()->user()->applies->contains($this->vacantId);
+        $this->isApplied = auth()->user()->applies->contains($this->vacant->id);
     }
 
     public function save()
@@ -29,15 +31,23 @@ class ApplyVacant extends Component
         $this->validate();
 
         //? Guardar el CV
-        $cv = $this->cv->store('public/cv');
+        $cv = $this->cv->store('public/cv'); //* Regresa la ruta donde se guardo el cv
         $cvName = Str::replace('public/cv/', '', $cv);
 
         //? Crear el registro
         Applicant::create([
             'user_id' => auth()->user()->id,
-            'vacant_id' => $this->vacantId,
+            'vacant_id' => $this->vacant->id,
             'cv' => $cvName
         ]);
+        
+        //? Enviar notificación
+        $this->vacant->recruiter->notify(new NewApplicant(
+            $this->vacant->id,
+            $this->vacant->title,
+            $this->vacant->recruiter->id
+        ));
+
         $this->isApplied = true;
     }
 

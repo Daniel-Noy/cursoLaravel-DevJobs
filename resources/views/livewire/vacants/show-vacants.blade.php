@@ -18,18 +18,18 @@
         {{--? ---- Acciones ---- --}}
         <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center text-center">
             <a href=""
-            class="py-4 md:py-2 px-4 bg-slate-700 dark:bg-slate-900 hover:bg-slate-600 rounded-lg text-white text-xs font-bold uppercase"
+            class="py-4 md:py-2 px-4 bg-slate-700 dark:bg-slate-900 hover:bg-slate-700 rounded-lg text-white text-xs font-bold uppercase transition-colors duration-75"
             >
                 Postulaciones
             </a>
             <a href="{{ route('vacants.edit', $vacant) }}"
-            class="py-4 md:py-2 px-4 bg-blue-700 dark:bg-slate-700 hover:bg-blue-800 rounded-lg text-white text-xs font-bold uppercase"
+            class="py-4 md:py-2 px-4 bg-blue-700 dark:bg-slate-700 hover:bg-blue-800 rounded-lg text-white text-xs font-bold uppercase transition-colors duration-75"
             >
                 Editar
             </a>
             <button
             wire:click="$dispatch('confirm-delete', {id: {{ $vacant->id }}})"
-            class="py-4 md:py-2 px-4 bg-red-600 dark:bg-red-900 hover:bg-red-700 rounded-lg text-white text-xs font-bold uppercase"
+            class="py-4 md:py-2 px-4 bg-red-600 dark:bg-red-900 hover:bg-red-700 rounded-lg text-white text-xs font-bold uppercase transition-colors duration-75"
             >
                 Eliminar
             </button>

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 // use Illuminate\Support\Carbon;
 
 class Vacant extends Model
@@ -41,7 +43,12 @@ class Vacant extends Model
         ]);
     }
 
-    protected function Applicants()
+    protected function recruiter()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected function applicants(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applicants');
     }

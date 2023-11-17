@@ -53,4 +53,12 @@ class VacantController extends Controller
             'vacant' => $vacant
         ]);
     }
+
+    /**
+     * Show the list of applicants of the vacant
+     */
+    public function applicants()
+    {
+
+    }
 }
