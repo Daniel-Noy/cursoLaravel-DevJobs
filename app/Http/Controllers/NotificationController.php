@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+    
     /**
      * Handle the incoming request.
      */
@@ -14,7 +19,6 @@ class NotificationController extends Controller
     {
         $notifications = auth()->user()->unreadNotifications;
         $notifications->markAsRead();
-        
         return view('notifications.index', [
             'notifications' => $notifications
         ]);

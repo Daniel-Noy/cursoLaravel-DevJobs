@@ -6,6 +6,7 @@
                 <a href="{{ route('home')}}" class="self-center text-4xl text-gray-800 dark:text-gray-200">Dev<span class="font-black">Jobs</span></a>
                 <!-- Navigation Links -->
                 @auth
+                @cannot('create', App\Models\Applicant::class)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-links.nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
                         {{ __('Dashboard') }}
@@ -14,6 +15,7 @@
                         {{ __('Nueva Vacante') }}
                     </x-links.nav-link>
                 </div>
+                @endcannot
                 @endauth
             </div>
 
@@ -92,6 +94,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         @auth
+        @cannot('create', App\Models\Applicant::class)
         <div class="pt-2 pb-3 space-y-1">
             <x-links.responsive-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
                 {{ __('Dashboard') }}
@@ -100,6 +103,7 @@
                 {{ __('Nueva Vacante') }}
             </x-links.responsive-nav-link>
         </div>
+        @endcannot
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

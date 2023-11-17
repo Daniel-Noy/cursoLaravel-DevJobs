@@ -9,7 +9,7 @@ class VacantController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified'])
+        $this->middleware(['auth', 'verified', 'rol.recruiter'])
         ->except('show');
     }
     /**

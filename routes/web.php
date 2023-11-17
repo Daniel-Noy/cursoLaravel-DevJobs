@@ -32,5 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/notifications', NotificationController::class)->name('notifications.index');
+Route::get('/notifications', NotificationController::class)
+            ->name('notifications.index')
+            ->middleware('rol.recruiter');
 require __DIR__.'/auth.php';
