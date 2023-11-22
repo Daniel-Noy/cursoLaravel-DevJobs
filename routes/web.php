@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacantController;
@@ -23,6 +24,9 @@ Route::get('/', function () {
 //? ---- Admin ----
 Route::get('/dashboard', [VacantController::class, 'index'])->name('vacants.index');
 Route::resource('vacants', VacantController::class)->except('index');
+
+Route::get('/applicants/{vacant}', [ApplicantController::class, 'index'])->name('applicants.index');
+
 // Route::get('/dashboard/{vacant}/applicants', [VacantController::class, 'applicants'])->name('vacants.applicants');
 
 //? ---- Profile ----
@@ -32,7 +36,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/notifications', NotificationController::class)
-            ->name('notifications.index')
-            ->middleware('rol.recruiter');
+Route::get('/notifications', NotificationController::class)->name('notifications.index');
 require __DIR__.'/auth.php';

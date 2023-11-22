@@ -17,9 +17,10 @@
 
         {{--? ---- Acciones ---- --}}
         <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center text-center">
-            <a href=""
+            <a href="{{ route('applicants.index', $vacant) }}"
             class="py-4 md:py-2 px-4 bg-slate-700 dark:bg-slate-900 hover:bg-slate-700 rounded-lg text-white text-xs font-bold uppercase transition-colors duration-75"
             >
+                {{ $vacant->applicants->count()}}
                 Postulaciones
             </a>
             <a href="{{ route('vacants.edit', $vacant) }}"

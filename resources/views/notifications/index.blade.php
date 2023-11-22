@@ -9,8 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- <h3 class="font-semibold leading-loose text-lg text-gray-800 dark:text-gray-200">Notificaciones nuevas</h3> --}}
             @forelse ($notifications as $notification)
-            <a href="" class="cursor-pointer">
-                <div class="flex flex-col md:flex-row justify-between gap-3 md:items-center p-6 dark:text-gray-200 dark:hover:text-white bg-white dark:bg-gray-800 border dark:border-0 border-gray-50 overflow-hidden shadow-sm sm:rounded-lg">
+            <a href="{{ route('applicants.index', $notification->data['vacantId']) }}" class="cursor-pointer">
+                <div class="flex flex-col md:flex-row justify-between gap-3 md:items-center mb-2 p-6 dark:text-gray-200 bg-white dark:bg-gray-800 dark:hover:bg-gray-600 border dark:border-0 border-gray-50 overflow-hidden shadow-sm sm:rounded-lg">
                     <p>Nuevo candidato en: <span class="font-bold">{{ $notification->data['vacantName']}}</span></p>
                     <p class="text-sm">Hace <span class="font-bold">{{ $notification->created_at->diffForHumans() }}</span></p>
                 </div>
